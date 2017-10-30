@@ -21,11 +21,15 @@ class AddController extends Controller
     {
         $listCategories = CategoriesController::getCategories();
 
+//        $test = new TestController();
+//        $test->insertTicket();
+
+        $testSelect = new TestController();
+        $testSelect->selectTicketCategory();
+
         return view('add_ticket', compact('listCategories'))->render();
     }
 
     public function sendData()
-    {
-
-    }
+    {}
 }

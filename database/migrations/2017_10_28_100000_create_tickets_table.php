@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTicketPhotoTable extends Migration
+class CreateTicketsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,14 +19,14 @@ class CreateTicketPhotoTable extends Migration
      */
     public function up()
     {
-        Schema::create('ticket_photo', function (Blueprint $table) {
+        Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
-
-            $table->integer('new_ticket_id')->unsigned()->default(1);
-
-            $table->foreign('new_ticket_id')->references('id')->on('new_tickets')->onDelete('cascade');;
-
-            $table->string('link');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('theme');
+            $table->string('message');
+            $table->string('status');
+            $table->timestamps();
         });
     }
 
@@ -37,6 +37,6 @@ class CreateTicketPhotoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ticket_photo');
+        Schema::dropIfExists('tickets');
     }
 }
