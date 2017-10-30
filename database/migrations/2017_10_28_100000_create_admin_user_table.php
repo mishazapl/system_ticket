@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewTicketTable extends Migration
+class CreateAdminUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,13 +19,12 @@ class CreateNewTicketTable extends Migration
      */
     public function up()
     {
-        Schema::create('new_tickets', function (Blueprint $table) {
+        Schema::create('admin_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_name');
-            $table->string('theme');
-            $table->string('message');
-            $table->integer('status');
-            $table->timestamps();
+
+            $table->integer('user_id')->unsigned()->default(1);
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
         });
     }
 
@@ -36,6 +35,6 @@ class CreateNewTicketTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('new_tickets');
+        Schema::dropIfExists('admin_user');
     }
 }

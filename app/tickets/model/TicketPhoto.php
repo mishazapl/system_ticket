@@ -4,8 +4,7 @@ namespace App\tickets\model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CategoriesList extends Model
+class TicketPhoto extends Model
 {
-    protected $table = 'categories_list';
-
+    protected $table = 'ticket_photo';
 }
