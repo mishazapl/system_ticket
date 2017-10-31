@@ -13,8 +13,6 @@ class CategoriesController extends Controller
     {
         $categories = Categories::all('id','name')->toArray();
 
-        dump(\Illuminate\Support\Facades\Auth::id());
-
         return $categories;
     }
 }

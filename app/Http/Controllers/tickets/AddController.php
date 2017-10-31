@@ -19,7 +19,7 @@ class AddController extends Controller
 
     public function show()
     {
-//        $listCategories = CategoriesController::getCategories();
+        $listCategories = CategoriesController::getCategories();
 
 //        $test = new TestController();
 //        $test->insertTicket();
@@ -33,12 +33,15 @@ class AddController extends Controller
 //        $deleteData = new TestController();
 //        $deleteData->deleteDate();
 
-//        return view('add_ticket', compact('listCategories'))->render();
-        return view('add_ticket');
+        return view('add_ticket', compact('listCategories'))->render();
+//        return view('add_ticket');
     }
 
     public function sendData(Request $request)
     {
-        print 'Hello!';
+//        dump($request->post('category'));
+//        dump($request->post('theme'));
+
+        dump($request->post());
     }
 }
