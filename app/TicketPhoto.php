@@ -1,6 +1,6 @@
 <?php
 
-namespace App\tickets\model;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,6 +12,6 @@ class TicketPhoto extends Model
 
     public function tickets()
     {
-        return $this->belongsTo('App\tickets\model\Tickets');
+        return $this->belongsTo('App\Tickets');
     }
 }

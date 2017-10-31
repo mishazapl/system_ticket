@@ -24,8 +24,11 @@ class AddController extends Controller
 //        $test = new TestController();
 //        $test->insertTicket();
 
-        $testSelect = new TestController();
-        $testSelect->selectTicketCategory();
+//        $testSelect = new TestController();
+//        $testSelect->insertPhoto();
+
+        $selectCategory = new TestController();
+        $selectCategory->selectTicketCategory();
 
         return view('add_ticket', compact('listCategories'))->render();
     }

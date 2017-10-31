@@ -26,7 +26,7 @@
                 <textarea name="theme" placeholder="Введите тему сообщения" required rows="2" cols="60"></textarea>
 
                     @for ($i = 0; $i < count($listCategories); $i++)
-                        <input type="checkbox" name="categories[]" value="{{ $listCategories[$i]['categories'] }}">{{ $listCategories[$i]['categories'] }}
+                        <input type="checkbox" name="categories[]" value="{{ $listCategories[$i]['name'] }}">{{ $listCategories[$i]['name'] }}
                     @endfor
 
                 <textarea name="message" placeholder="Введите ваше сообщение" required rows="3" cols="60"></textarea>
