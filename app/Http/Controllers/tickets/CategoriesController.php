@@ -11,7 +11,7 @@ class CategoriesController extends Controller
 
     public static function getCategories()
     {
-        $categories = Categories::all('name')->toArray();
+        $categories = Categories::all('id','name')->toArray();
 
         dump(\Illuminate\Support\Facades\Auth::id());
 

@@ -21,6 +21,8 @@ class CreateCategoriesTicketsTable extends Migration
     {
         Schema::create('categories_tickets', function (Blueprint $table) {
 
+            $table->increments('id');
+
             $table->integer('ticket_id')->unsigned();
 
 

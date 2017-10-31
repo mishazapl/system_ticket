@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\tickets;
 
 use App\Categories;
+use App\CategoriesTickets;
 use App\TicketPhoto;
 use App\Tickets;
 use App\User;
@@ -91,8 +92,35 @@ class TestController extends Controller
      * Методы изменения
      */
 
+    public function updateTable()
+    {
+//        $ticket = Tickets::find(1);
+//        $ticket->theme = 'Update!';
+//        $ticket->save();
+
+//        $category = Categories::find(1);
+//        $category->name = 'Обновил';
+//        $category->save();
+
+//        $ticketupdate = Tickets::find(1)->categories();
+//        $ticketupdate->name = 'Снова обновил';
+//        $ticketupdate->save();
+
+//        $categoryTicket = CategoriesTickets::find(1);
+//        $categoryTicket->category_id = 1;
+//        $categoryTicket->save();
+//        dump($categoryTicket);
+    }
+
 
     /**
      * Методы удаления
      */
+
+    public function deleteDate()
+    {
+//        $tickets = Tickets::find(1);
+//
+//        $tickets->delete();
+    }
 }

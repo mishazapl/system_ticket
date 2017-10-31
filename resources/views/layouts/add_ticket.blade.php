@@ -21,22 +21,22 @@
 <div class="container text-center">
     <div class="row">
         <div class="col-md-12">
-            <form action="/" class="mainForm" enctype="multipart/form-data" method="post">
+            <form action="/" class="mainForm" enctype="multipart/form-data" method="POST" >
 
-                <textarea name="theme" placeholder="Введите тему сообщения" required rows="2" cols="60"></textarea>
+                <textarea name="theme" placeholder="Введите тему сообщения" id="theme" value="{{ old('theme') }}" required rows="2" cols="60"></textarea>
 
                     @for ($i = 0; $i < count($listCategories); $i++)
-                        <input type="checkbox" name="categories[]" value="{{ $listCategories[$i]['name'] }}">{{ $listCategories[$i]['name'] }}
+                        <input type="checkbox" name="categories[]" value="{{ $listCategories[$i]['id'] }}">{{ $listCategories[$i]['name'] }}
                     @endfor
 
-                <textarea name="message" placeholder="Введите ваше сообщение" required rows="3" cols="60"></textarea>
+                <textarea name="message" placeholder="Введите ваше сообщение" value="{{ old('message') }}" required rows="3" cols="60"></textarea>
 
-                <input type="file" name="photo1">
+                <input type="file" name="photo1" value="{{ old('photo1') }}">
 
-                <input type="file" name="photo2">
+                <input type="file" name="photo2" value="{{ old('photo2') }}">
 
-                <select name="status[]" required>
-                    <option name="new">Новый</option>
+                <select name="status[]" value="{{ old('status[]') }}" required>
+                    <option name="new" value="Новый">Новый</option>
                 </select>
 
                 <input type="submit" name="submit">

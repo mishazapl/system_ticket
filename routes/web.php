@@ -11,11 +11,12 @@
 |
 */
 
+Route::get('/tickets/add', 'tickets\AddController@show');
+Route::post('/tickets/add', 'tickets\AddController@sendData');
+
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/tickets/add', 'tickets\AddController@show');
 
 Auth::routes();
 
