@@ -10,4 +10,10 @@ class CategoriesTickets extends Model
 
     public $timestamps = false;
 
+    protected $fillable =
+        [
+            'ticket_id',
+            'category_id'
+        ];
+
 }

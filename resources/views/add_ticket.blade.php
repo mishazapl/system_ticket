@@ -7,43 +7,43 @@
     <hr/>
     <div class="form-group text-center">
 
-    {!! Form::open(['url' => '/tickets/add', 'action' => 'tickets\AddController@sendData', 'files' => 'true']) !!}
+        {!! Form::open(['url' => '/tickets/add', 'files' => 'true']) !!}
 
         {!! Form::label('theme', 'Theme Message:') !!}
         {!! Form::text('theme') !!}
 
-        <br />
+        <br/>
 
         {!! Form::label('category[]', 'Select Category:') !!}
 
         @for ($i = 0; $i < count($listCategories); $i++)
-        {!! Form::checkbox('category[]', $listCategories[$i]['id']) !!}
+            {!! Form::checkbox('category[]', $listCategories[$i]['id']) !!}
             {!! $listCategories[$i]['name'] !!}
         @endfor
 
-        <br />
+        <br/>
 
         {!! Form::label('message', 'Write message') !!}
 
         {!! Form::text('message') !!}
 
-        <br />
-        <br />
+        <br/>
+        <br/>
 
-        {!! Form::file('image1', ['style' => 'display: inline-block']); !!}
-        {!! Form::file('image2', ['style' => 'display: inline-block']); !!}
+        {!! Form::file('photo1', ['style' => 'display: inline-block']); !!}
+        {!! Form::file('photo2', ['style' => 'display: inline-block']); !!}
 
-        <br />
-        <br />
+        <br/>
+        <br/>
 
-        {!! Form::select('status[]',['Новый' => 'Новый']); !!}
+        {!! Form::select('status',['Новый' => 'Новый']); !!}
 
-        <br />
-        <br />
+        <br/>
+        <br/>
 
-        {!! Form::submit() !!}
+        {!! Form::submit('Добавить тикет', ['class' => 'btn btn-primary']) !!}
 
-    {!! Form::close() !!}
+        {!! Form::close() !!}
 
     </div>
 @stop

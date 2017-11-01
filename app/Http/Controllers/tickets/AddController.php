@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\tickets;
 
+use App\Http\Requests\CreateTicketRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -37,11 +38,13 @@ class AddController extends Controller
 //        return view('add_ticket');
     }
 
-    public function sendData(Request $request)
+    public function sendData(CreateTicketRequest $request)
     {
 //        dump($request->post('category'));
-//        dump($request->post('theme'));
+//        dump($request->post('status'));
 
         dump($request->post());
+        dump($request->allFiles());
+//        dump($request->file('photo1')->getSize());
     }
 }

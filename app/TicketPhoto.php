@@ -10,6 +10,12 @@ class TicketPhoto extends Model
 
     public $timestamps = false;
 
+    protected $fillable =
+        [
+            'ticket_id',
+            'link'
+        ];
+
     public function tickets()
     {
         return $this->belongsTo('App\Tickets');

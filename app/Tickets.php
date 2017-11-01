@@ -8,6 +8,14 @@ class Tickets extends Model
 {
     protected $table = 'tickets';
 
+    protected $fillable =
+        [
+          'user_id',
+          'theme',
+          'message',
+          'status'
+        ];
+
     public function ticketPhotos()
     {
         return $this->hasMany('App\TicketPhoto');
