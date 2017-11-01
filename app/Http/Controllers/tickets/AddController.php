@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\tickets;
 
 use App\Http\Requests\CreateTicketRequest;
+use App\TicketPhoto;
+use App\Tickets;
+use Illuminate\Http\File;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AddController extends Controller
 {
@@ -20,31 +25,52 @@ class AddController extends Controller
 
     public function show()
     {
+        /**
+         * Получение категорий
+         */
+
         $listCategories = CategoriesController::getCategories();
 
-//        $test = new TestController();
-//        $test->insertTicket();
-
-//        $testSelect = new TestController();
-//        $testSelect->insertPhoto();
-
-//        $selectCategory = new TestController();
-//        $selectCategory->updateTable();
-
-//        $deleteData = new TestController();
-//        $deleteData->deleteDate();
-
         return view('add_ticket', compact('listCategories'))->render();
-//        return view('add_ticket');
     }
 
-    public function sendData(CreateTicketRequest $request)
+    public function store(CreateTicketRequest $request)
     {
-//        dump($request->post('category'));
-//        dump($request->post('status'));
 
-        dump($request->post());
-        dump($request->allFiles());
-//        dump($request->file('photo1')->getSize());
+        /**
+         * Сохранение тикета
+         */
+
+        $model = new Tickets();
+        $model->user_id = Auth::user()->id;
+        $model->theme = $request->post('theme');
+        $model->message = $request->post('message');
+        $model->status = $request->post('status');
+        $model->save();
+
+        /**
+         * Сохранение связанных категорий
+         */
+
+        $model->categories()->sync($request->post('category'));
+
+
+        /**
+         * Сохранение файлов.
+         */
+
+        if ($request->file('photo') != null) {
+            foreach ($request->file('photo') as $photo) {
+                $path = Storage::put('uploads/'.$model->id, $photo);
+                $savePhoto = new TicketPhoto;
+                $savePhoto->ticket_id = $model->id;
+                $savePhoto->link = $path;
+                $savePhoto->save();
+            }
+        }
+
+
     }
+
+
 }

@@ -26,7 +26,6 @@ class CreateTicketPhotoTable extends Migration
 
             $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
 
-
             $table->string('link');
         });
     }

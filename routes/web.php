@@ -12,7 +12,7 @@
 */
 
 Route::get('/tickets/add', 'tickets\AddController@show');
-Route::post('/tickets/add', 'tickets\AddController@sendData');
+Route::post('/tickets/add', 'tickets\AddController@store');
 
 Route::get('/', function () {
     return view('welcome');

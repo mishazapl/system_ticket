@@ -30,8 +30,8 @@
         <br/>
         <br/>
 
-        {!! Form::file('photo1', ['style' => 'display: inline-block']); !!}
-        {!! Form::file('photo2', ['style' => 'display: inline-block']); !!}
+        {!! Form::file('photo[]', ['style' => 'display: inline-block']); !!}
+        {!! Form::file('photo[]', ['style' => 'display: inline-block']); !!}
 
         <br/>
         <br/>
@@ -45,5 +45,14 @@
 
         {!! Form::close() !!}
 
+        <br />
+
+        @if ($errors->any())
+            <ul class="alert alert-danger">
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
     </div>
 @stop

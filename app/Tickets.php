@@ -16,7 +16,7 @@ class Tickets extends Model
           'status'
         ];
 
-    public function ticketPhotos()
+    public function ticketsPhoto()
     {
         return $this->hasMany('App\TicketPhoto');
     }
@@ -31,10 +31,4 @@ class Tickets extends Model
         return $this->belongsToMany('App\Categories', 'categories_tickets', 'ticket_id', 'category_id');
     }
 
-//    public function ticketCategory()
-//    {
-//        return $this->belongsToMany('App\tickets\model\Categories', 'categories', 'ticket_id', 'id');
-//
-////        return $this->belongsToMany(Categories::class);
-//    }
 }

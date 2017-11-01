@@ -74,8 +74,8 @@ class TestController extends Controller
 //        $ticket = TicketPhoto::find(1);
 //        dump($ticket->tickets->toArray());
 
-//        $ticket = Tickets::find(1);
-//        dump($ticket->ticketsCategories->toArray());
+//        $ticket = Tickets::find(2)->categories->toArray();
+//        dump($ticket);
 
 //        $ticket = TicketsCategories::all('tickets_id')->where('categories_id', '=', 1)->toArray();
 //        dump($result = Tickets::all()->where('id', '=', $ticket[0]['tickets_id']));
