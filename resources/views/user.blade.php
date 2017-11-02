@@ -5,22 +5,37 @@
         Привет {{ Auth::user()->name }}
     </div>
 
-        <table class="table">
+        <table class="table-bordered table">
             <thread>
                 <tr>
                     <th>Тема</th>
                     <th>Сообщение</th>
                     <th>Статус</th>
+                    <th>Категории</th>
                     <th>Можно редактировать</th>
                 </tr>
             </thread>
             <tbody>
-            @foreach($ticket as $k => $v)
+            @foreach($user->tickets as $ticket)
                 <tr>
-                    <td>{{ $v['theme'] }}</td>
-                    <td>{{ $v['message'] }}</td>
-                    <td>{{ $v['status'] }}</td>
-                    @if ($v['status'] == 'Новый')
+                    <td>{{ $ticket['theme'] }}</td>
+                    <td>{{ $ticket['message'] }}</td>
+                    <td>{{ $ticket['status'] }}</td>
+
+                    @foreach($tickets as $ticket2)
+
+                        @if($ticket->id == $ticket2->id)
+                            <td>
+                            @foreach($ticket->categories as $category)
+                                {{ $category->name }}
+
+                            @endforeach
+                            </td>
+                        @endif
+
+                    @endforeach
+
+                    @if ($ticket['status'] == 'Новый')
                         <td class="success"><a href="#">Да</a></td>
                         @else
                         <td class="danger">Нет</td>
