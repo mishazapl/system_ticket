@@ -22,4 +22,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/user/{id}', 'tickets\user@show');
+
 

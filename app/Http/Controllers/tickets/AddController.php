@@ -55,6 +55,7 @@ class AddController extends Controller
         $model->categories()->sync($request->post('category'));
 
 
+
         /**
          * Сохранение файлов.
          */
@@ -69,7 +70,7 @@ class AddController extends Controller
             }
         }
 
-
+        return redirect('/user/'.Auth::user()->id);
     }
 
 
