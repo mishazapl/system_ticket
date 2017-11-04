@@ -24,4 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/user/{id}', 'tickets\UserAccount@show');
 
+Route::get('/user/edit/{id}', 'tickets\ChangeController@show');
+Route::post('/user/edit/{id}', 'tickets\ChangeController@store');
 
+Route::get('/user/delete/{id}', 'tickets\DeleteController@delete');

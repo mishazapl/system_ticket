@@ -22,9 +22,9 @@ class CreateTicketPhotoTable extends Migration
         Schema::create('ticket_photo', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('ticket_id')->unsigned();
+            $table->integer('tickets_id')->unsigned();
 
-            $table->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
+            $table->foreign('tickets_id')->references('id')->on('tickets')->onDelete('cascade');
 
             $table->string('link');
         });

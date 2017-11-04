@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\tickets;
 
+use App\Categories;
 use App\Http\Requests\CreateTicketRequest;
 use App\TicketPhoto;
 use App\Tickets;
@@ -29,9 +30,9 @@ class AddController extends Controller
          * Получение категорий
          */
 
-        $listCategories = CategoriesController::getCategories();
+        $allCategories = Categories::all();
 
-        return view('add_ticket', compact('listCategories'))->render();
+        return view('add_ticket', compact('allCategories'));
     }
 
     public function store(CreateTicketRequest $request)
@@ -52,7 +53,7 @@ class AddController extends Controller
          * Сохранение связанных категорий
          */
 
-        $model->categories()->sync($request->post('category'));
+        $model->categories()->sync($request->post('categories'));
 
 
 
@@ -64,7 +65,7 @@ class AddController extends Controller
             foreach ($request->file('photo') as $photo) {
                 $path = Storage::put('uploads/'.$model->id, $photo);
                 $savePhoto = new TicketPhoto;
-                $savePhoto->ticket_id = $model->id;
+                $savePhoto->tickets_id = $model->id;
                 $savePhoto->link = $path;
                 $savePhoto->save();
             }

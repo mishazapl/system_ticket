@@ -54,6 +54,8 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a href="{{ '/user/' . Auth::user()->id }}">Личный кабинет</a>
+                                        <a href="/tickets/add">Добавить тикет</a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

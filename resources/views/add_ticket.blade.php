@@ -14,12 +14,12 @@
 
         <br/>
 
-        {!! Form::label('category[]', 'Select Category:') !!}
+        {!! Form::label('categories[]', 'Select Category:') !!}
 
-        @for ($i = 0; $i < count($listCategories); $i++)
-            {!! Form::checkbox('category[]', $listCategories[$i]['id']) !!}
-            {!! $listCategories[$i]['name'] !!}
-        @endfor
+        @foreach($allCategories as $category)
+            {!! Form::checkbox('categories[]', $category->id) !!}
+            {!! $category->name !!}
+        @endforeach
 
         <br/>
 
@@ -30,8 +30,7 @@
         <br/>
         <br/>
 
-        {!! Form::file('photo[]', ['style' => 'display: inline-block']); !!}
-        {!! Form::file('photo[]', ['style' => 'display: inline-block']); !!}
+        {!! Form::file('photo[]', ['multiple' => true, 'size' => '10', 'style' => 'display: inline-block']); !!}
 
         <br/>
         <br/>

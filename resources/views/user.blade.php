@@ -12,7 +12,9 @@
                     <th>Сообщение</th>
                     <th>Статус</th>
                     <th>Категории</th>
+                    <th>Фотографии</th>
                     <th>Можно редактировать</th>
+                    <th>Можно удалить</th>
                 </tr>
             </thread>
             <tbody>
@@ -22,21 +24,26 @@
                     <td>{{ $ticket['message'] }}</td>
                     <td>{{ $ticket['status'] }}</td>
 
-                    @foreach($tickets as $ticket2)
+                    <td>
+                        @foreach($ticket->categories as $category)
 
-                        @if($ticket->id == $ticket2->id)
-                            <td>
-                            @foreach($ticket->categories as $category)
-                                {{ $category->name }}
+                            {{ $category->name }}
 
-                            @endforeach
-                            </td>
-                        @endif
+                        @endforeach
+                    </td>
 
+                    <td>
+
+                    @foreach($ticket->ticketsPhoto as $photo)
+                            <div style="width: 200px;height: 200px;"><img style="-webkit-background-size: cover;background-size: cover; width: 100%;" src="{{ asset($photo->link) }}" alt="фото"></div>
                     @endforeach
 
+                    </td>
+
+
                     @if ($ticket['status'] == 'Новый')
-                        <td class="success"><a href="#">Да</a></td>
+                        <td class="success"><a href="{{ url('/user/edit/'.$ticket['id']) }}">Да</a></td>
+                        <td class="success"><a href="{{ url('/user/delete/'.$ticket['id']) }}">Удалить</a></td>
                         @else
                         <td class="danger">Нет</td>
                     @endif
