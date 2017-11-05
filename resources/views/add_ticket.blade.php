@@ -35,7 +35,7 @@
         <br/>
         <br/>
 
-        {!! Form::select('status',['Новый' => 'Новый']); !!}
+        {!! Form::select('status',['1' => 'Новый']); !!}
 
         <br/>
         <br/>

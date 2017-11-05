@@ -14,9 +14,7 @@
 Route::get('/tickets/add', 'tickets\AddController@show');
 Route::post('/tickets/add', 'tickets\AddController@store');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'tickets\MainPageController@show');
 
 Auth::routes();
 

@@ -19,9 +19,14 @@ class RightEditUser
     {
         $ticket = Tickets::find(request('id'));
 
+        if ($ticket != null) {
+            foreach ($ticket->status as $ticketStatus) {
+            }
+        }
+
         if ($ticket == null) {
             return abort(404);
-        } elseif ($ticket->user_id != Auth::user()->id || $ticket->status != 'Новый') {
+        } elseif ($ticket->user_id != Auth::user()->id || $ticketStatus->name != 'Новый') {
             return abort(404 );
         }
 

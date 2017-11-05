@@ -22,7 +22,12 @@
                 <tr>
                     <td>{{ $ticket['theme'] }}</td>
                     <td>{{ $ticket['message'] }}</td>
-                    <td>{{ $ticket['status'] }}</td>
+
+                    @foreach($ticket->status as $status)
+
+                        <td>{{ $status->name }}</td>
+
+                    @endforeach
 
                     <td>
                         @foreach($ticket->categories as $category)
@@ -35,17 +40,18 @@
                     <td>
 
                     @foreach($ticket->ticketsPhoto as $photo)
-                            <div style="width: 200px;height: 200px;"><img style="-webkit-background-size: cover;background-size: cover; width: 100%;" src="{{ asset($photo->link) }}" alt="фото"></div>
+                            <div style="width: 50px;height: 50px; display: inline-block;"><img style="-webkit-background-size: cover;background-size: cover; width: 100%;" src="{{ asset($photo->link) }}" alt="фото"></div>
                     @endforeach
 
                     </td>
 
 
-                    @if ($ticket['status'] == 'Новый')
+                    @if ($status->name == 'Новый')
                         <td class="success"><a href="{{ url('/user/edit/'.$ticket['id']) }}">Да</a></td>
                         <td class="success"><a href="{{ url('/user/delete/'.$ticket['id']) }}">Удалить</a></td>
                         @else
-                        <td class="danger">Нет</td>
+                        <td>Нет</td>
+                        <td>Нет</td>
                     @endif
                 </tr>
             @endforeach

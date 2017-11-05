@@ -31,4 +31,9 @@ class Tickets extends Model
         return $this->belongsToMany('App\Categories', 'categories_tickets', 'ticket_id', 'category_id');
     }
 
+    public function status()
+    {
+        return $this->belongsToMany('App\Status', 'tickets_status', 'ticket_id', 'status_id');
+    }
+
 }

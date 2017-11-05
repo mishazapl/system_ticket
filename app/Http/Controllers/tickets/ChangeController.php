@@ -34,6 +34,8 @@ class ChangeController extends Controller
 
     public function store(CreateTicketRequest $request)
     {
+
+
         /**
          * Сохранение тикета
          */
@@ -42,7 +44,6 @@ class ChangeController extends Controller
         $model->user_id = Auth::user()->id;
         $model->theme = $request->post('theme');
         $model->message = $request->post('message');
-        $model->status = $request->post('status');
         $model->save();
 
 
@@ -53,10 +54,9 @@ class ChangeController extends Controller
         $model->categories()->sync($request->post('categories'));
 
 
-
         if ($request->file('photo') != null) {
             foreach ($request->file('photo') as $photo) {
-                $path = Storage::put('uploads/'.$model->id, $photo);
+                $path = Storage::put('uploads/' . $model->id, $photo);
                 $savePhoto = new TicketPhoto;
                 $savePhoto->tickets_id = $model->id;
                 $savePhoto->link = $path;
@@ -70,11 +70,12 @@ class ChangeController extends Controller
 
         if ($request->post('photoDel') != null) {
             foreach ($request->post('photoDel') as $delPhoto) {
-                dump($delPhoto);
                 $ticketsPhoto = Tickets::find(request('id'))->ticketsPhoto->where('link', '=', $delPhoto)->first();
                 $ticketsPhoto->delete();
                 Storage::delete($delPhoto);
             }
         }
+        return redirect('/user/edit/' . request('id'));
     }
+
 }

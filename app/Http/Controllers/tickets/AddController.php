@@ -46,7 +46,6 @@ class AddController extends Controller
         $model->user_id = Auth::user()->id;
         $model->theme = $request->post('theme');
         $model->message = $request->post('message');
-        $model->status = $request->post('status');
         $model->save();
 
         /**
@@ -55,6 +54,11 @@ class AddController extends Controller
 
         $model->categories()->sync($request->post('categories'));
 
+        /**
+         * Сохранение связанного статуса
+         */
+
+        $model->status()->sync($request->post('status'));
 
 
         /**

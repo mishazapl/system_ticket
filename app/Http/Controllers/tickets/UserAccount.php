@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\tickets;
 
 use App\Http\Controllers\Controller;
+use App\Status;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 

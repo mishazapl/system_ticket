@@ -4,6 +4,7 @@ namespace App\Http\Controllers\tickets;
 
 use App\Tickets;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class DeleteController extends Controller
@@ -18,5 +19,6 @@ class DeleteController extends Controller
         $model = Tickets::find(request('id'));
         $model->delete();
         Storage::deleteDirectory('uploads/'.$model->id);
+        return redirect('/user/'.Auth::user()->id);
     }
 }

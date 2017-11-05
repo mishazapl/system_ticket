@@ -28,7 +28,7 @@ class CreateTicketRequest extends FormRequest
             'categories' => 'required|array',
             'message' => 'required|string',
             'photo.*' => 'mimes:png,jpg,jpeg',
-            'status' => 'required|string'
+            'status' => 'required|in:1'
         ];
     }
 }

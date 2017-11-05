@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <!doctype html>
 <html lang="{{ app()->getLocale() }}">
     <head>
@@ -67,29 +70,22 @@
     <body>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="top-right links text-center">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ url('/home') }}" style="font-size: 30px;">Home</a>
+                        <hr>
                     @endauth
+                    @foreach($categoriesList as $category)
+                        <div style="display: inline-block; margin-right: 30px; font-size: 30px;">{{ $category->name }}</div>
+                        <div style="display: inline-block; margin-right: 30px; font-size: 20px; border: 2px red solid; padding: 20px; ">Кол-во тикетов - {{ $category::find($category->id)->tickets->count() }}</div>
+                    @endforeach
                 </div>
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
             </div>
         </div>
     </body>
 </html>
+@endsection
