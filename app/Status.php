@@ -14,9 +14,5 @@ class Status extends Model
     {
         return $this->belongsToMany('App\Tickets', 'tickets_status', 'status_id', 'ticket_id');
     }
-
-    public function categories()
-    {
-        $this->belongsTo('App\Categories');
-    }
+    
 }

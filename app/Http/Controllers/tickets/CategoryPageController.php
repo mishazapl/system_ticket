@@ -18,14 +18,6 @@ class CategoryPageController extends Controller
 
         $ticketStatusAll = Status::all();
 
-        foreach ($categoriesList as $category) {
-
-            foreach ($category->tickets as $ticket) {
-
-
-            }
-
-        }
 
 
 //        foreach ($categoriesList as $category) {
