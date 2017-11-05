@@ -20,4 +20,9 @@ class Categories extends Model
     {
         return $this->belongsToMany('App\Tickets', 'categories_tickets', 'category_id', 'ticket_id');
     }
+
+    public function status()
+    {
+        return $this->hasMany('App\Status');
+    }
 }

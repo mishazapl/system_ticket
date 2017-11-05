@@ -16,6 +16,8 @@ Route::post('/tickets/add', 'tickets\AddController@store');
 
 Route::get('/', 'tickets\MainPageController@show');
 
+Route::get('/categories/{slug}', 'tickets\CategoryPageController@show');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

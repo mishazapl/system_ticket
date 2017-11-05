@@ -76,14 +76,40 @@
                         <hr>
                     @endauth
                     @foreach($categoriesList as $category)
-                        <div style="display: inline-block; margin-right: 30px; font-size: 30px;">{{ $category->name }}</div>
-                        <div style="display: inline-block; margin-right: 30px; font-size: 20px; border: 2px red solid; padding: 20px; ">Кол-во тикетов - {{ $category::find($category->id)->tickets->count() }}</div>
+                        <div style="display: block; font-size: 30px;"><a href="{{ url('/categories/'.$category->slug) }}">{{ $category->name }}</a></div>
+                        <div style="display: block; font-size: 20px; padding: 20px; ">Кол-во тикетов - {{ $category::find($category->id)->tickets->count() }}</div>
                     @endforeach
                 </div>
             @endif
 
             <div class="content">
 
+                <table class="table-bordered table">
+
+                    <thread>
+                        <tr>
+                          <th>Тема</th>
+                          <th>Статус</th>
+                        </tr>
+                    </thread>
+                <tbody>
+                @foreach($ticketStatusAll as $ticketStatus)
+
+
+                    @foreach($ticketStatus->tickets->sortByDesc('created_at') as $ticket)
+                        <tr>
+                        <td>{{ $ticket->theme }}</td>
+
+                        @foreach($ticket->status as $status)
+
+                            <td>{{ $status->name }}</td>
+
+                        @endforeach
+                        </tr>
+                    @endforeach
+                @endforeach
+                </tbody>
+                </table>
             </div>
         </div>
     </body>

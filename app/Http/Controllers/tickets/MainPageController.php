@@ -16,10 +16,6 @@ class MainPageController extends Controller
 
         $ticketStatusAll = Status::all();
 
-        foreach ($ticketStatusAll as $ticketStatus) {
-            dump($ticketStatus->tickets);
-        }
-
-        return view('welcome', compact('categoriesList'));
+        return view('welcome', compact('categoriesList', 'ticketStatusAll'));
     }
 }
