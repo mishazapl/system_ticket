@@ -40,7 +40,7 @@
                 <td>
 
                     @foreach($ticket->ticketsPhoto as $photo)
-                        <div style="width: 50px;height: 50px; display: inline-block;"><img style="-webkit-background-size: cover;background-size: cover; width: 100%;" src="{{ asset($photo->link) }}" alt="фото"></div>
+                        <a href="{{ url('/uploads/users/'.$ticket->user->id.'/'.$ticket->id) }}"><div style="width: 50px;height: 50px; display: inline-block;"><img style="-webkit-background-size: cover;background-size: cover; width: 100%;" src="{{ asset($photo->link) }}" alt="фото"></div></a>
                     @endforeach
 
                 </td>

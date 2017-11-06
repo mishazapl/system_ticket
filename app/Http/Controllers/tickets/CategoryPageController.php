@@ -19,22 +19,6 @@ class CategoryPageController extends Controller
         $ticketStatusAll = Status::all();
 
 
-
-//        foreach ($categoriesList as $category) {
-//            dump($category->status);
-//
-////            foreach ($category->tickets->sortByDesc('created_at') as $ticketStatus) {
-////
-////                dump($ticketStatus->theme);
-////
-////                foreach ($ticketStatus->status->sortBy('id') as $ticket) {
-////                    dump($ticket->name);
-////                }
-////
-////            }
-//
-//        }
-
         return view('categories_page', compact('categoriesList', 'ticketStatusAll'));
 
     }

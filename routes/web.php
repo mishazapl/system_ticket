@@ -24,15 +24,28 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/admin/{id}', 'tickets\AdminAccountController@show');
 
-Route::get('/admin/edit/{id}', 'tickets\ChangeAdminController@show');
-Route::post('/admin/edit/{id}', 'tickets\ChangeAdminController@store');
-Route::get('/admin/delete/{id}', 'tickets\DeleteAdminController@delete');
+Route::get('/uploads/users/{id}/{ticketId}/', 'tickets\PhotoTicketController@show');
 
-Route::get('/user/{id}', 'tickets\UserAccount@show');
+Route::group(['prefix' => 'admin'], function() {
 
-Route::get('/user/edit/{id}', 'tickets\ChangeUserController@show');
-Route::post('/user/edit/{id}', 'tickets\ChangeUserController@store');
+    Route::get('/{id}', 'tickets\AdminAccountController@show');
 
-Route::get('/user/delete/{id}', 'tickets\DeleteUserController@delete');
+    Route::get('/edit/{id}', 'tickets\ChangeAdminController@show');
+    Route::post('/edit/{id}', 'tickets\ChangeAdminController@store');
+    Route::get('/delete/{id}', 'tickets\DeleteAdminController@delete');
+
+});
+
+
+Route::group(['prefix' => 'user'], function () {
+
+    Route::get('/{id}', 'tickets\UserAccount@show');
+
+    Route::get('/edit/{id}', 'tickets\ChangeUserController@show');
+    Route::post('/edit/{id}', 'tickets\ChangeUserController@store');
+
+    Route::get('/delete/{id}', 'tickets\DeleteUserController@delete');
+
+});
+
