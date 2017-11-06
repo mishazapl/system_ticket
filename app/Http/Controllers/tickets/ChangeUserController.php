@@ -10,7 +10,7 @@ use App\Tickets;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class ChangeController extends Controller
+class ChangeUserController extends Controller
 {
 
     public function __construct()

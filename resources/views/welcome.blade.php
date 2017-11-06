@@ -98,7 +98,7 @@
 
                     @foreach($ticketStatus->tickets->sortByDesc('created_at') as $ticket)
                         <tr>
-                        <td>{{ $ticket->theme }}</td>
+                        <td><a href="{{ url('/ticket/'.$ticket->id) }}"> {{ $ticket->theme }} </a></td>
 
                         @foreach($ticket->status as $status)
 

@@ -59,5 +59,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'cabinetUser' => \App\Http\Middleware\RightCabinet::class,
         'rightEditUser' => \App\Http\Middleware\RightEditUser::class,
+        'cabinetAdmin' => \App\Http\Middleware\CabinetAdmin::class,
+        'rightEditAdmin' => \App\Http\Middleware\RightEditAdmin::class,
     ];
 }

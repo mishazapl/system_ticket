@@ -18,13 +18,21 @@ Route::get('/', 'tickets\MainPageController@show');
 
 Route::get('/categories/{slug}', 'tickets\CategoryPageController@show');
 
+Route::get('/ticket/{id}', 'tickets\TicketPageController@show');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/admin/{id}', 'tickets\AdminAccountController@show');
+
+Route::get('/admin/edit/{id}', 'tickets\ChangeAdminController@show');
+Route::post('/admin/edit/{id}', 'tickets\ChangeAdminController@store');
+Route::get('/admin/delete/{id}', 'tickets\DeleteAdminController@delete');
+
 Route::get('/user/{id}', 'tickets\UserAccount@show');
 
-Route::get('/user/edit/{id}', 'tickets\ChangeController@show');
-Route::post('/user/edit/{id}', 'tickets\ChangeController@store');
+Route::get('/user/edit/{id}', 'tickets\ChangeUserController@show');
+Route::post('/user/edit/{id}', 'tickets\ChangeUserController@store');
 
-Route::get('/user/delete/{id}', 'tickets\DeleteController@delete');
+Route::get('/user/delete/{id}', 'tickets\DeleteUserController@delete');

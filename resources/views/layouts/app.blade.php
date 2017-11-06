@@ -56,6 +56,7 @@
                                     <li>
                                         <a href="{{ '/user/' . Auth::user()->id }}">Личный кабинет</a>
                                         <a href="/tickets/add">Добавить тикет</a>
+                                        <a href="{{ '/admin/'. Auth::user()->id }}">Админ панель</a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -97,6 +97,7 @@
 
 
                 @foreach($ticketStatus->tickets->sortByDesc('created_at') as $ticket)
+
                     <tr>
                         <td>{{ $ticket->theme }}</td>
 

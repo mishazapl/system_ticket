@@ -32,9 +32,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Tickets');
     }
 
-    public function role()
+    public function admin()
     {
-        return $this->hasOne('App\Role');
+        return $this->hasOne('App\Admin');
     }
 
 }

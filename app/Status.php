@@ -14,5 +14,5 @@ class Status extends Model
     {
         return $this->belongsToMany('App\Tickets', 'tickets_status', 'status_id', 'ticket_id');
     }
-    
+
 }

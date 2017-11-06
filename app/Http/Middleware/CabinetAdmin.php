@@ -2,10 +2,11 @@
 
 namespace App\Http\Middleware;
 
+use App\User;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RightCabinet
+class CabinetAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,11 +17,14 @@ class RightCabinet
      */
     public function handle($request, Closure $next)
     {
-        if (is_null(request('id'))) {
+
+
+        if (is_null(request('id')) || is_null(Auth::user()) || is_null(User::find(Auth::user()->id)->admin)) {
             return abort(404);
-        } elseif (request('id') != Auth::user()->id) {
+        } elseif (request('id') != User::find(Auth::user()->id)->admin->id) {
             return abort(404);
         }
+
         return $next($request);
     }
 }

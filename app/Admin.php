@@ -4,17 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class Admin extends Model
 {
-    protected $table = 'role';
+    protected $table = 'admin';
 
     public $timestamps = false;
-
-    protected $fillable =
-        [
-            'user_id',
-            'name'
-        ];
 
     public function user()
     {
